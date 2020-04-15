@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Consultar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="StyleSheet" href="animal.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Concert+One|Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kreon&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div id="contenedor">
+    <A name="arriba"></A>
+    <A name="primero">
+        <header><h1>Sistema de Adopción de Animales Domésticos</h1></header>
+    </A>
+    <form th:action="@{/logout}" method="post">
+        <button class="btn" style="position: absolute;top: 0;right: 0;" name="btnSalir"><img src="salir.png"/></button>
+    </form>
+    <nav>
+        <ul>
+            <li><a href="http://localhost:9090/Inicio"> Registrar</a></li>
+            <li><a href="http://localhost:9090/info"> Consultar</a></li>
+            <li><a href="http://localhost:9090/modificar"> Modificar</a></li>
+            <li><a href="http://localhost:9090/eliminar"> Eliminar</a></li>
+            <li><a href="http://localhost:9090/adoptar"> Adoptar</a></li>
+        </ul>
+    </nav>
+    <div class="div">
+        <br>
+        <!--<center><A name="segundo"></A><font class="textT"><H1>CONSULTAR</H1></font></center>-->
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Color</th>
+                <th>Fecha de Nac</th>
+                <th>Raza</th>
+                <th>Tipo de pelaje</th>
+                <th>Vacunas</th>
+                <th>Estatus</th>
+                <th>Adoptante</th>
+                <th>Fotografía</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ani : ${animal}">
+                <td th:text="${ani.id}"></td>
+                <td th:text="${ani.nombre}"></td>
+                <td th:text="${ani.tipo}"></td>
+                <td th:bgcolor="${ani.color}"></td> <!--th:bgcolor="${ani.color}"-->
+                <td th:text="${ani.fechaNacimiento}"></td>
+                <td th:text="${ani.raza}"></td>
+                <td th:text="${ani.pelaje}"></td>
+                <td th:text="${ani.vacunas}"></td>
+                <td th:text="${ani.adopcion}"></td>
+               <td th:text="${ani.nombre_adopcion}"></td>
+                <td><img th:src="${'data:image/png;base64,' + ani.str}" style="width:100%;max-width:80px"/></td>
+
+                <!--<td>
+                    <a th:href="@{/delete/{id}(id=${ani.id})}"> <button class=boton name="btnEliminar"> Eliminar</button>
+                    </a>
+                </td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
