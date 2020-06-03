@@ -1,4 +1,7 @@
 DROP TABLE IF EXISTS TBL_ANIMALES;
+DROP TABLE IF EXISTS USUARIOS;
+DROP TABLE IF EXISTS PRODUCTOS;
+
 CREATE TABLE TBL_ANIMALES(
 id INT AUTO_INCREMENT PRIMARY KEY,
 nombre VARCHAR(100) NOT NULL,
@@ -12,3 +15,20 @@ nombre_adopcion VARCHAR(250) DEFAULT NULL,
 tipo VARCHAR(100) NOT NULL,
 foto longblob,
 str text);
+
+CREATE TABLE USUARIOS(
+id INT AUTO_INCREMENT PRIMARY KEY,
+active tinyint  default '1',
+username varchar(30) not null,
+password varchar(30) not null,
+rol varchar(30) not null
+);
+
+CREATE TABLE PRODUCTOS(
+id INT PRIMARY KEY,
+producto VARCHAR(100) NOT NULL,
+precio INT NOT NULL,
+cantidad INT NOT NULL,
+foto longblob,
+str text
+);

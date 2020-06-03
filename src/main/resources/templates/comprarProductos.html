@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Adopción</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="StyleSheet" href="/animal.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Concert+One|Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kreon&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="contenedor">
+    <header><h1>Sistema de Adopción de Animales Domésticos</h1></header>
+    </A>
+    <form th:action="@{/logout}" method="post">
+        <button class="btn" style="position: absolute;top: 0;right: 0;" name="btnSalir"><img src="salir2.png"/></button>
+    </form>
+    <nav>
+        <ul>
+            <li><a href="http://localhost:9090/principal"> Inicio</a></li>
+            <li><a href="http://localhost:9090/InicioProductos"> Registrar Productos</a></li>
+            <li><a href="http://localhost:9090/infoProductos"> Consultar Productos</a></li>
+            <li><a href="http://localhost:9090/modificarProductos"> Modificar Productos</a></li>
+            <li><a href="http://localhost:9090/eliminarProductos"> Eliminar Productos</a></li>
+            <li><a href="http://localhost:9090/adoptarProductos"> Comprar Productos</a></li>
+        </ul>
+    </nav>
+    <div class="div">
+        <form action="#" th:action="@{/comprar/comprateProductos}" th:object="${product}" method="post">
+
+            <input type="hidden" nombre="id" th:field="*{id}">
+            <input type="hidden" nombre="id" th:field="*{producto}">
+            <input type="hidden" tipo="id" th:field="*{precio}">
+            <input type="hidden" raza="id" th:field="*{precio}">
+            <input type="hidden" class="textT" name="adjunto" accept=".pdf,.jpg,.png" th:field="*{foto}">
+
+            <button th: class="textT" id=boton name="Adoptar">Comprar</button>
+
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

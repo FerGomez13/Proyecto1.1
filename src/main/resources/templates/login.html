@@ -16,7 +16,7 @@
     <header><h1>Sistema de Adopción de Animales Domésticos</h1></header>
     </A>
     <nav>
-       <h1><a><label class="textT"> INICIAR SESIÓN</label></a></h1>
+        <h1><a><label class="textT"> INICIAR SESIÓN</label></a></h1>
     </nav>
     <form th:action="@{/logout}" method="post">
         <button class="btn" style="position: absolute;top: 0;right: 0;" name="btnSalir"><img src="salir.png"/></button>
@@ -38,10 +38,10 @@
                 <br>
 
                 <label class="textT"> Usuario: </label>
-                <input class="input"  type="text" name="username"/>
+                <input class="input" type="text" name="username"/>
                 <label class="textT"> Contraseña: </label>
-                <input class="input"  type="password" name="password"/>
-                <button class="textT" id=boton  name="btnRegistrar">Entrar</button>
+                <input class="input" type="password" name="password"/>
+                    <button th:href="@{/principal}" class="btn" id=boton name="btnRegistrar">Entrar</button>
             </form>
         </div>
     </center>

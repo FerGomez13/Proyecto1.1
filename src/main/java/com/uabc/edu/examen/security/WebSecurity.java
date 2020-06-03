@@ -1,28 +1,35 @@
 package com.uabc.edu.examen.security;
 
+import com.uabc.edu.examen.service.MyUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-
-import static org.glassfish.jersey.message.filtering.SecurityAnnotations.permitAll;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurity  extends WebSecurityConfigurerAdapter {
+public class WebSecurity extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    MyUserDetailsService userDetailService;
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
+
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailService);
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/animal.css","/").permitAll()
-                .antMatchers("/*.png","/*.jpg","/*.jpeg").permitAll()
+                .antMatchers("/animal.css", "/").permitAll()
+                .antMatchers("/*.png", "/*.jpg", "/*.jpeg").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -34,6 +41,11 @@ public class WebSecurity  extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
+    public PasswordEncoder getPasswordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
+
+    /*  @Bean
     @Override
     public UserDetailsService userDetailsService(){
         UserDetails user =
@@ -43,5 +55,5 @@ public class WebSecurity  extends WebSecurityConfigurerAdapter {
                         .roles("USER")
                         .build();
         return new InMemoryUserDetailsManager(user);
-    }
+    } */
 }

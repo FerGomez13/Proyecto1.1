@@ -18,15 +18,16 @@
         <header><h1>Sistema de Adopción de Animales Domésticos</h1></header>
     </A>
     <form th:action="@{/logout}" method="post">
-        <button class="btn" style="position: absolute;top: 0;right: 0;" name="btnSalir"><img src="salir.png"/></button>
+        <button class="btn" style="position: absolute;top: 0;right: 0;" name="btnSalir"><img src="salir2.png"/></button>
     </form>
     <nav>
         <ul>
-            <li><a href="http://localhost:9090/Inicio"> Registrar</a></li>
-            <li><a href="http://localhost:9090/info"> Consultar</a></li>
-            <li><a href="http://localhost:9090/modificar"> Modificar</a></li>
-            <li><a href="http://localhost:9090/eliminar"> Eliminar</a></li>
-            <li><a href="http://localhost:9090/adoptar"> Adoptar</a></li>
+            <li><a href="http://localhost:9090/principal"> Inicio</a></li>
+            <li><a href="http://localhost:9090/Inicio"> Registrar Animales</a></li>
+            <li><a href="http://localhost:9090/info"> Consultar Animales</a></li>
+            <li><a href="http://localhost:9090/modificar"> Modificar Animales</a></li>
+            <li><a href="http://localhost:9090/eliminar"> Eliminar Animales</a></li>
+            <li><a href="http://localhost:9090/adoptar"> Adoptar Animales</a></li>
         </ul>
     </nav>
     <div class="div">
@@ -62,7 +63,7 @@
                 <td th:text="${ani.nombre_adopcion}"></td>
                 <td><img th:src="${'data:image/png;base64,' + ani.str}" style="width:100%;max-width:80px"/></td>
                 <td>
-                    <a th:href="@{/adopt/{id}(id=${ani.id})}"> <button class=btn name="btnAdoptar"><img src="select.png"/> </button>
+                    <a th:href="@{/adopcion/adopt/{id}(id=${ani.id})}"> <button class=btn name="btnAdoptar"><img src="select.png"/> </button>
                     </a>
                 </td>
 

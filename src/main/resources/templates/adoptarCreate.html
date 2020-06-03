@@ -19,18 +19,19 @@
     </form>
     <nav>
         <ul>
-            <li><a href="http://localhost:9090/Inicio"> Registrar</a></li>
-            <li><a href="http://localhost:9090/info"> Consultar</a></li>
-            <li><a href="http://localhost:9090/modificar"> Modificar</a></li>
-            <li><a href="http://localhost:9090/eliminar"> Eliminar</a></li>
-            <li><a href="http://localhost:9090/adopcion"> Adoptar</a></li>
+            <li><a href="http://localhost:9090/principal"> Inicio</a></li>
+            <li><a href="http://localhost:9090/Inicio"> Registrar Animales</a></li>
+            <li><a href="http://localhost:9090/info"> Consultar Animales</a></li>
+            <li><a href="http://localhost:9090/modificar"> Modificar Animales</a></li>
+            <li><a href="http://localhost:9090/eliminar"> Eliminar Animales</a></li>
+            <li><a href="http://localhost:9090/adoptar"> Adoptar Animales</a></li>
         </ul>
     </nav>
     <div class="div">
         <form action="#" th:action="@{/adopcion/adoptateAnimal}" th:object="${animal}" method="post" >
             <label class="textT" > Adoptante: </label>
             <input class="inputlarge" placeholder="Nombre del adoptante" th:field="*{nombre_adopcion}" type="text">
-            <button th: class="textT" id=boton  name="Adoptar">Adoptar</button>
+            <button class="textT" id=boton  name="Adoptar">Adoptar</button>
             <input type="hidden" nombre="id" th:field="*{id}">
             <input type="hidden" nombre="id" th:field="*{nombre}">
             <input type="hidden" tipo="id" th:field="*{tipo}">

@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Adoptar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="StyleSheet" href="animal.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Concert+One|Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kreon&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div id="contenedor">
+    <A name="arriba"></A>
+    <A name="primero">
+        <header><h1>Sistema de Adopción de Animales Domésticos</h1></header>
+    </A>
+    <form th:action="@{/logout}" method="post">
+        <button class="btn" style="position: absolute;top: 0;right: 0;" name="btnSalir"><img src="salir.png"/></button>
+    </form>
+    <nav>
+        <center>
+            <ul>
+                <li><a> INICIO</a></li>
+            </ul>
+        </center>
+    </nav>
+    <div class="div">
+        <br>
+            <a href=""><img src="usuarios.jpg" width="200px" height="400px"/></a>
+            <a href="http://localhost:9090/info"><img src="adopcion.jpg" width="200px" height="400px"/></a>
+            <a href="http://localhost:9090/infoProductos"><img src="tienda.jpg" width="200px" height="400px"/></a>
+    </div>
+</div>
+</body>
+</html>

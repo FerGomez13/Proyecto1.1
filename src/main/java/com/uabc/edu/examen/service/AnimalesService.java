@@ -18,9 +18,9 @@ public class AnimalesService {
     @Autowired
     AnimalesRepository repository;
 
-       public List<AnimalesEntity> getAnimals() {
+    public List<AnimalesEntity> getAnimals() {
         return (List<AnimalesEntity>) repository.findAll();
-        }
+    }
 
     public AnimalesEntity getAnimalById(Long id){
         Optional<AnimalesEntity> animal = repository.findById(id);
@@ -28,7 +28,7 @@ public class AnimalesService {
         if (animal.isPresent()) {
             return repository.findById(id).get();
         }
-            return animal.get();
+        return animal.get();
     }
 
     public AnimalesEntity createAnimal(AnimalesEntity ani) {
