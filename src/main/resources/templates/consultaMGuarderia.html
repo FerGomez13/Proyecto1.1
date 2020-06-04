@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Consultar Guarderia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="StyleSheet" href="animal.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Concert+One|Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kreon&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div id="contenedor">
+    <A name="arriba"></A>
+    <A name="primero">
+        <header><h1>Sistema de Guarderia para Animales Domésticos</h1></header>
+    </A>
+    <form th:action="@{/logout}" method="post">
+        <button class="btn" style="position: absolute;top: 0;right: 0;" name="btnSalir"><img src="salir.png"/></button>
+    </form>
+    <nav>
+        <ul>
+            <li><a href="http://localhost:9090/principal"> Inicio</a></li>
+            <li><a href="http://localhost:9090/InicioGuarderia"> Registrar Animales</a></li>
+            <li><a href="http://localhost:9090/infoGuarderia"> Consultar Animales</a></li>
+            <li><a href="http://localhost:9090/modificarGuarderia"> Modificar Animales</a></li>
+            <li><a href="http://localhost:9090/eliminarGuarderia"> Eliminar Animales</a></li>
+        </ul>
+    </nav>
+    <div class="div">
+        <br>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Color</th>
+                <th>Raza</th>
+                <th>Vacunas</th>
+                <th>Fecha de Entrada</th>
+                <th>Fecha de Salida</th>
+                <th>Costo</th>
+                <th>Fotografía</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="gua : ${guard}">
+                <td th:text="${gua.id}"></td>
+                <td th:text="${gua.nombre}"></td>
+                <td th:text="${gua.tipo}"></td>
+                <td th:bgcolor="${gua.color}"></td>
+                <td th:text="${gua.raza}"></td>
+                <td th:text="${gua.vacunas}"}></td>
+                <td th:text="${gua.fecha_entrada}"></td>
+                <td th:text="${gua.fecha_salida}"></td>
+                <td th:text="${gua.costo}"></td>
+                <td><img th:src="${'data:image/png;base64,' + gua.str}" style="width:100%;max-width:80px"/></td>
+                <td>
+                    <a th:href="@{/editarGuarderia/{id}(id=${gua.id})}"> <button class=btn name="btnModificar"><img src="pencil.png"/> </button>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

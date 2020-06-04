@@ -63,7 +63,8 @@
                 <td th:text="${ani.nombre_adopcion}"></td>
                 <td><img th:src="${'data:image/png;base64,' + ani.str}" style="width:100%;max-width:80px"/></td>
                 <td>
-                    <a th:href="@{/adopcion/adopt/{id}(id=${ani.id})}"> <button class=btn name="btnAdoptar"><img src="select.png"/> </button>
+                    <a th:href="@{/adopcion/adopt/{id}(id=${ani.id})}">
+                        <button class=btn name="btnAdoptar"><img src="select.png"/> </button>
                     </a>
                 </td>
 

@@ -44,7 +44,6 @@ public class AnimalesMvcController {
     public String getAnimalsAdop(Model model) //Consulta
     {
         List<AnimalesEntity> animal = service.getAnimals();
-
         model.addAttribute("animal", animal);
         return "consultaA";
     }

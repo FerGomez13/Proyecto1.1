@@ -3,30 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Eliminar</title>
+    <title>Eliminar Productos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="StyleSheet" href="animal.css" type="text/css">
+    <link rel="StyleSheet" href="/animal.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Concert+One|Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kreon&display=swap" rel="stylesheet">
-
 </head>
 <body>
 <div id="contenedor">
     <A name="arriba"></A>
     <A name="primero">
-        <header><h1>Sistema de Adopción de Animales Domésticos</h1></header>
+        <header><h1>Tienda Para Animales Domésticos</h1></header>
     </A>
     <form th:action="@{/logout}" method="post">
-        <button class="btn" style="position: absolute;top: 0;right: 0;" name="btnSalir"><img src="salir.png"/></button>
+        <button class="btn" style="position: absolute;top: 0;right: 0;" name="btnSalir"><img src="salir2.png"/></button>
     </form>
     <nav>
-        <li><a href="http://localhost:9090/principal"> Inicio</a></li>
-        <li><a href="http://localhost:9090/InicioProductos"> Registrar Productos</a></li>
-        <li><a href="http://localhost:9090/infoProductos"> Consultar Productos</a></li>
-        <li><a href="http://localhost:9090/modificarProductos"> Modificar Productos</a></li>
-        <li><a href="http://localhost:9090/eliminarProductos"> Eliminar Productos</a></li>
-        <li><a href="http://localhost:9090/adoptarProductos"> Comprar Productos</a></li>
+        <ul>
+            <li><a href="http://localhost:9090/principal"> Inicio</a></li>
+            <li><a href="http://localhost:9090/InicioProductos"> Registrar Productos</a></li>
+            <li><a href="http://localhost:9090/infoProductos"> Consultar Productos</a></li>
+            <li><a href="http://localhost:9090/modificarProductos"> Modificar Productos</a></li>
+            <li><a href="http://localhost:9090/eliminarProductos"> Eliminar Productos</a></li>
+            <li><a href="http://localhost:9090/compra"> Comprar Productos</a></li>
         </ul>
     </nav>
     <div class="div">
@@ -47,7 +47,7 @@
                 <td th:text="${pro.id}"></td>
                 <td th:text="${pro.producto}"></td>
                 <td th:text="${pro.precio}"></td>
-                <td th:bgcolor="${pro.cantidad}"></td>
+                <td th:text="${pro.cantidad}"></td>
                 <td><img th:src="${'data:image/png;base64,' + pro.str}" style="width:100%;max-width:80px"/></td>
                 <td>
                     <a th:href="@{/deleteProductos/{id}(id=${pro.id})}">

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Modificar Animal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="StyleSheet" href="/animal.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Concert+One|Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kreon&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="contenedor">
+    <A name="arriba"></A>
+    <A name="primero">
+        <header><h1>Sistema de Guarderia para Animales Domésticos</h1></header>
+    </A>
+    <form th:action="@{/logout}" method="post">
+        <button class="btn" style="position: absolute;top: 0;right: 0;" name="btnSalir"><img src="salir2.png"/></button>
+    </form>
+    <nav>
+        <ul>
+            <li><a href="http://localhost:9090/principal"> Inicio</a></li>
+            <li><a href="http://localhost:9090/InicioGuarderia"> Registrar Animales</a></li>
+            <li><a href="http://localhost:9090/infoGuarderia"> Consultar Animales</a></li>
+            <li><a href="http://localhost:9090/modificarGuarderia"> Modificar Animales</a></li>
+            <li><a href="http://localhost:9090/eliminarGuarderia"> Eliminar Animales</a></li>
+        </ul>
+    </nav>
+    <center>
+        <div class="div" >
+            <form action="#" th:action="@{/updateGuard}" th:object="${guard}" method="post" enctype="multipart/form-data">
+                <br>
+                <br>
+                <input type="hidden" id="id" th:field="*{id}">
+                <label class="textT"> Nombre: </label>
+                <input class="input"  type="text" th:field="*{nombre}" />
+
+                <label class="textT"> Raza: </label>
+                <input class="input" type="text" name="raza" th:field="*{raza}" >
+
+                <label class="textT"> Color: </label>
+                <input class="input" type="color" name="color" th:field="*{color}" >
+
+                <label class="textT"> Vacunas: </label>
+                <label class="textM">
+                    <input class="textM" type="checkbox" id="cbox2" th:field="*{vacunas}" value="Moquillo"> Moquillo
+                    <input class="textM" type="checkbox" id="cbox3" th:field="*{vacunas}" value="Rabia"> Rabia
+                    <input class="textM" type="checkbox" id="cbox4" th:field="*{vacunas}" value="Trivalente"> Trivalente
+                    <input class="textM" type="checkbox" id="cbox5" th:field="*{vacunas}" value="Parvovirus"> Parvovirus
+                    <input class="textM" type="checkbox" id="cbox6" th:field="*{vacunas}" value="Coronavirus"> Coronavirus
+                </label>
+
+                <label class="textT"> Tipo: </label>
+                <select class="Lista" th:field="*{tipo}" placeholder="Tipo del animal"><label class="textM">
+                    <option value="" >Seleccionar</option>
+                    <option value="Perro" >Perro</option>
+                    <option value="Gato" >Gato</option>
+                </label>
+                </select>
+
+                <label class="textT">Fecha de Entrada: </label>
+                <input class="inputc" type="date" name="fechanac" th:field="*{fecha_entrada}" >
+
+                <label class="textT">Fecha de salida: </label>
+                <input class="inputc" type="date" name="fechanac" th:field="*{fecha_salida}" >
+
+                <label class="textT">Costo: </label>
+                <input class="input"  type="text" th:field="*{costo}" />
+                <br><br>
+
+                <br><br>
+                <label class="textT"> Seleccionar Fotografía:</label>
+                <input type="file" class="textT" name="adjunto" accept=".pdf,.jpg,.png" th:field="*{foto}">
+
+                <br><br><br><br>
+                <button class="textT" id=boton  name="btnRegistrar">Modificar</button>
+            </form>
+        </div>
+    </center>
+</div>
+</body>
+</html>

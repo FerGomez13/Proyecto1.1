@@ -39,7 +39,6 @@ public class ProductosMvcController {
     public String getProdutsAdop(Model model) //Consulta
     {
         List<ProductosEntity> product = service.getProducts();
-
         model.addAttribute("product", product);
         return "consultaAProductos";
     }
@@ -69,13 +68,6 @@ public class ProductosMvcController {
         ProductosEntity product = service.getProductById(id);
         model.addAttribute("product", product);
         return "modificarProductos";
-    }
-
-    @RequestMapping(path = {"/adoptProductos/{id}"})
-    public String editProductosByIdA(Model model, @PathVariable(value = "id", required = true) Long id) {
-        ProductosEntity product = service.getProductById(id);
-        model.addAttribute("product", product);
-        return "comprarProductos";
     }
 
     @RequestMapping(path = {"/deleteProductos", "/deleteProductos/{id}"})
@@ -141,39 +133,5 @@ public class ProductosMvcController {
 
         model.addAttribute("product", product);
         return "eliminarProductos";
-    }
-
-    @RequestMapping("/adoptarProductos")
-    public String getProductsAdop(Model model) //Consulta
-    {
-        List<ProductosEntity> product = service.getProducts();
-
-        model.addAttribute("product", product);
-        return "consultaAProductos";
-    }
-
-    @RequestMapping(path = "/adoptateProduct", method = RequestMethod.POST)
-    public String adoptateProduct(@RequestParam(value = "id", required = false) Optional<Long> id,
-                                  @RequestParam(value = "producto", required = true) String producto,
-                                  @RequestParam(value = "precio", required = true) int precio,
-                                  @RequestParam(value = "cantidad", required = true) int cantidad,
-                                  @RequestParam(value = "foto", required = false, defaultValue = "No disponible") MultipartFile foto) {
-        ProductosEntity productEntity;
-        if (id.isPresent()) {
-            productEntity = service.getProductById(id.get());
-        } else {
-            productEntity = new ProductosEntity();
-        }
-        productEntity.setProducto(producto);
-        productEntity.setPrecio(precio);
-        productEntity.setCantidad(cantidad);
-        try {
-            productEntity.setFoto(foto.getBytes());
-        } catch (Exception e) {
-            System.out.println("SAVE ANIMAL ERROR: >>> " + e);
-        }
-        productEntity.setStr(Base64.getEncoder().encodeToString(productEntity.getFoto()));
-        service.createProduct(productEntity);
-        return "redirect:/infoProductos";
     }
 }

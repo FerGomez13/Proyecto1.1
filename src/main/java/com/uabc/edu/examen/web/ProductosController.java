@@ -42,7 +42,7 @@ public class ProductosController {
         System.out.println(productosEntity.toString());
         productosEntity.setProducto(producto);
         productosEntity.setPrecio(precio);
-        productosEntity.setCantidad(cantidad);
+        productosEntity.setCantidad(cantidad - 1);
         productosEntity.setFoto(productosEntity.getFoto());
         productosEntity.setStr(productosEntity.getStr());
         System.out.println(productosEntity.getId() + "hola mi amigo");
